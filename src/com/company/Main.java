@@ -1,8 +1,10 @@
 package com.company;
-
+// This code is so so much slower than Alt! Brute force really. I admire the mathematics in Alt and the creativity to use several nested loops.
+//  Learning some neat technique, admit utter defeat at having slow slow slow code and moving on.
 public class Main {
 
     public static void main(String[] args) {
+        long startTime = System.nanoTime();
         int largestPalindrome = 1;
 
         for (int i = 999; i > 99; i--) {
@@ -12,6 +14,9 @@ public class Main {
             }
         }
         System.out.println(largestPalindrome);
+
+        long endTime = System.nanoTime();
+        System.out.println("Took "+(endTime - startTime) + " ns");
     }
 
     static boolean isPalindrome(int num) {
@@ -23,6 +28,8 @@ public class Main {
             middle += 1;  //Set the beginning element one over (to skip the lone number in the middle). If the number of digits is even, we don't want to skip any digits.
         right = palindrome.substring(middle, palindrome.length());
         right = new StringBuilder(right).reverse().toString();  //reverse the string to compare it
+
+        //Could make it into a character array and start comparing from beginning and end.
 
         return (left.compareTo(right) == 0);
     }
